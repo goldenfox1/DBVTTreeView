@@ -2699,7 +2699,7 @@ type
     {+}function DoSetOffsetXY(Value: TPoint; Options: TScrollUpdateOptions; ClipRect: PRect = nil): Boolean; virtual;
     procedure DoShowScrollBar(Bar: Integer; Show: Boolean); virtual;
     procedure DoStartDrag(var DragObject: TDragObject); override;
-    {+}procedure DoStartOperation(OperationKind: TD2VTOperationKind); virtual;
+    {+}procedure DoStartOperation(OperationKind: TVTOperationKind); virtual;
     {+}procedure DoStateChange(Enter: TVirtualTreeStates; Leave: TVirtualTreeStates = []); virtual;
     {+}procedure DoStructureChange(Node: PVirtualNode; Reason: TChangeReason); virtual;
     procedure DoTimerScroll; virtual;
@@ -20494,7 +20494,7 @@ end;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-procedure TBaseVirtualTree.DoStartOperation(OperationKind: TD2VTOperationKind);
+procedure TBaseVirtualTree.DoStartOperation(OperationKind: TVTOperationKind);
 
 begin
   if Assigned(FOnStartOperation) then

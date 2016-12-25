@@ -2094,7 +2094,7 @@ type
     {+}FLastSelectionLevel: Integer;                // keeps the last node level for constrained multiselection
     FDrawSelShiftState: TShiftState;             // keeps the initial shift state when the user starts selection with
                                                  // the mouse
-    {+}FEditLink: IVTEditLink;                      // used to comunicate with an application defined editor
+    FEditLink: IVTEditLink;                      // used to comunicate with an application defined editor
     {+}FTempNodeCache: TNodeArray;                  // used at various places to hold temporarily a bunch of node refs.
     {+}FTempNodeCount: Cardinal;                    // number of nodes in FTempNodeCache
     FBackground: TPicture;                       // A background image loadable at design and runtime.
@@ -2168,7 +2168,7 @@ type
     {+}FRangeY: Cardinal;                           // current virtual width and height of the tree
     {+}FBottomSpace: Cardinal;                      // Extra space below the last node.
 
-    FDefaultPasteMode: TVTNodeAttachMode;        // Used to determine where to add pasted nodes to.
+    {+}FDefaultPasteMode: TVTNodeAttachMode;        // Used to determine where to add pasted nodes to.
     {+}FSingletonNodeArray: TNodeArray;             // Contains only one element for quick addition of single nodes
                                                  // to the selection.
     FDragScrollStart: Cardinal;                  // Contains the start time when a tree does auto scrolling as drop target.
@@ -2614,7 +2614,7 @@ type
     {+}function DoCompare(Node1, Node2: PVirtualNode; Column: TColumnIndex): Integer; virtual;
     function DoCreateDataObject: IDataObject; virtual;
     function DoCreateDragManager: IVTDragManager; virtual;
-    {+}function DoCreateEditor(Node: PVirtualNode; Column: TColumnIndex): IVTEditLink; virtual;
+    function DoCreateEditor(Node: PVirtualNode; Column: TColumnIndex): IVTEditLink; virtual;
     procedure DoDragging(P: TPoint); virtual;
     procedure DoDragExpand; virtual;
     procedure DoBeforeDrawLineImage(Node: PVirtualNode; Level: Integer; var XPos: Integer); virtual;
@@ -2737,7 +2737,7 @@ type
     function GetMaxRightExtend: Cardinal; virtual;
     procedure GetNativeClipboardFormats(var Formats: TFormatEtcArray); virtual;
     function GetOperationCanceled: Boolean;
-    function GetOptionsClass: TTreeOptionsClass; virtual;
+    {+}function GetOptionsClass: TTreeOptionsClass; virtual;
     function GetTreeFromDataObject(const DataObject: IDataObject): TBaseVirtualTree; virtual;
     procedure HandleHotTrack(X, Y: Integer); virtual;
     procedure HandleIncrementalSearch(CharCode: Word); virtual;
@@ -3018,7 +3018,7 @@ type
     {+}function AbsoluteIndex(Node: PVirtualNode): Cardinal;
     {+}function AddChild(Parent: PVirtualNode; UserData: Pointer = nil): PVirtualNode; virtual;
     {+}procedure AddFromStream(Stream: TStream; TargetNode: PVirtualNode);
-    procedure AfterConstruction; override;
+    {+}procedure AfterConstruction; override;
     procedure Assign(Source: TPersistent); override;
     procedure BeginDrag(Immediate: Boolean; Threshold: Integer = -1);
     procedure BeginSynch;
@@ -3172,11 +3172,11 @@ type
     {+}procedure ToggleNode(Node: PVirtualNode);
     function UpdateAction(Action: TBasicAction): Boolean; override;
     {+}procedure UpdateHorizontalRange;
-    {+}procedure UpdateHorizontalScrollBar(DoRepaint: Boolean);
+    procedure UpdateHorizontalScrollBar(DoRepaint: Boolean);
     {+}procedure UpdateRanges;
-    {+}procedure UpdateScrollBars(DoRepaint: Boolean); virtual;
+    procedure UpdateScrollBars(DoRepaint: Boolean); virtual;
     {+}procedure UpdateVerticalRange;
-    {+}procedure UpdateVerticalScrollBar(DoRepaint: Boolean);
+    procedure UpdateVerticalScrollBar(DoRepaint: Boolean);
     //lcl: reenable in case TControl implementation change to match Delphi
 //  function UseRightToLeftReading: Boolean;
     {+}procedure ValidateChildren(Node: PVirtualNode; Recursive: Boolean);

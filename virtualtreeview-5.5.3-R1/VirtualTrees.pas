@@ -2046,7 +2046,7 @@ type
   TBaseVirtualTree = class(TCustomControl)
   private
     //FBorderStyle: TBorderStyle;
-    {+}FHeader: TVTHeader;
+    FHeader: TVTHeader;
     {+}FRoot: PVirtualNode;
     {+}FDefaultNodeHeight: Cardinal;
     FIndent: Cardinal;
@@ -2054,13 +2054,13 @@ type
     {+}FUpdateCount: Cardinal;                      // update stopper, updates of the tree control are only done if = 0
     FSynchUpdateCount: Cardinal;                 // synchronizer, causes all events which are usually done via timers
                                                  // to happen immediately, regardless of the normal update state
-    FNodeDataSize: Integer;                      // number of bytes to allocate with each node (in addition to its base
+    {+}FNodeDataSize: Integer;                      // number of bytes to allocate with each node (in addition to its base
                                                  // structure and the internal data), if -1 then do callback
     {+}FStates: TVirtualTreeStates;                 // various active/pending states the tree needs to consider
     {+}FLastSelected: PVirtualNode;
     {+}FFocusedNode: PVirtualNode;
     {+}FEditColumn: TColumnIndex;                                 // column to be edited (focused node)
-    {+}FFocusedColumn: TColumnIndex;                // NoColumn if no columns are active otherwise the last hit column of
+    FFocusedColumn: TColumnIndex;                // NoColumn if no columns are active otherwise the last hit column of
                                                  // the currently focused node
     FHeightTrackPoint: TPoint;                   // Starting point of a node's height changing operation.
     FHeightTrackNode: PVirtualNode;              // Node which height is being changed.
@@ -2069,7 +2069,7 @@ type
     {+}FLastStructureChangeReason: TChangeReason;   // Used for delayed structure change event.
     {+}FLastStructureChangeNode,                    // dito
     {+}FLastChangedNode,                            // used for delayed change event
-    {+}FCurrentHotNode: PVirtualNode;               // Node over which the mouse is hovering.
+    FCurrentHotNode: PVirtualNode;               // Node over which the mouse is hovering.
     FCurrentHotColumn: TColumnIndex;             // Column over which the mouse is hovering.
     FHotNodeButtonHit: Boolean;                  // Indicates wether the mouse is hovering over the hot node's button.
     FLastSelRect,
@@ -2077,7 +2077,7 @@ type
     FHotCursor: TCursor;                         // can be set to additionally indicate the current hot node
     FHintMode: TVTHintMode;                      // determines the kind of the hint window
     FHintData: TVTHintData;                      // used while preparing the hint window
-    {+}FChangeDelay: Cardinal;                      // used to delay OnChange event
+    FChangeDelay: Cardinal;                      // used to delay OnChange event
     FEditDelay: Cardinal;                        // determines time to elapse before a node goes into edit mode
     FPositionCache: TCache;                      // array which stores node references ordered by vertical positions
                                                  // (see also DoValidateCache for more information)
@@ -2088,7 +2088,7 @@ type
     {+}FSelectionLocked: Boolean;                   // prevents the tree from changing the selection 
     {+}FRangeAnchor: PVirtualNode;                  // anchor node for selection with the keyboard, determines start of a
                                                  // selection range
-    {+}FCheckNode: PVirtualNode;                    // node which "captures" a check event
+    FCheckNode: PVirtualNode;                    // node which "captures" a check event
     FPendingCheckState: TCheckState;             // the new state the check node will get if all went fine
     {+}FCheckPropagationCount: Cardinal;            // nesting level of check propagation (WL, 05.02.2004)
     {+}FLastSelectionLevel: Integer;                // keeps the last node level for constrained multiselection
@@ -2102,9 +2102,9 @@ type
     FTextMargin: Integer;                        // space between the node's text and its horizontal bounds
     FBackgroundOffsetX,
     FBackgroundOffsetY: Integer;                 // used to fine tune the position of the background image
-    {+}FAnimationDuration: Cardinal;                // specifies how long an animation shall take (expanding, hint)
+    FAnimationDuration: Cardinal;                // specifies how long an animation shall take (expanding, hint)
     FWantTabs: Boolean;                          // If True then the tree also consumes the tab key.
-    FNodeAlignment: TVTNodeAlignment;            // determines how to interpret the align member of a node
+    {+}FNodeAlignment: TVTNodeAlignment;            // determines how to interpret the align member of a node
     FHeaderRect: TRect;                          // Space which the header currently uses in the control (window coords).
     FLastHintRect: TRect;                        // Area which the mouse must leave to reshow a hint.
     FUpdateRect: TRect;
@@ -2344,11 +2344,11 @@ type
     FOnShowScrollBar: TVTScrollBarShowEvent;     // Called when a scrollbar is changed in its visibility.
 
     // search, sort
-    FOnCompareNodes: TVTCompareEvent;            // used during sort
+    {+}FOnCompareNodes: TVTCompareEvent;            // used during sort
     FOnDrawHint: TVTDrawHintEvent;
     FOnGetHintSize: TVTGetHintSizeEvent;
     FOnGetHintKind: TVTHintKindEvent;
-    FOnIncrementalSearch: TVTIncrementalSearchEvent; // triggered on every key press (not key down)
+    {+}FOnIncrementalSearch: TVTIncrementalSearchEvent; // triggered on every key press (not key down)
     FOnMouseEnter: TNotifyEvent;
     FOnMouseLeave: TNotifyEvent;
 
@@ -2429,7 +2429,7 @@ type
     {$endif}
     procedure PrepareBitmaps(NeedButtons, NeedLines: Boolean);
     procedure SetAlignment(const Value: TAlignment);
-    {+}procedure SetAnimationDuration(const Value: Cardinal);
+    procedure SetAnimationDuration(const Value: Cardinal);
     procedure SetBackground(const Value: TPicture);
     procedure SetBackgroundOffset(const Index, Value: Integer);
     {+}procedure SetBottomNode(Node: PVirtualNode);
@@ -2459,7 +2459,7 @@ type
     procedure SetLineStyle(const Value: TVTLineStyle);
     procedure SetMargin(Value: Integer);
     {+}procedure SetMultiline(Node: PVirtualNode; const Value: Boolean);
-    procedure SetNodeAlignment(const Value: TVTNodeAlignment);
+    {+}procedure SetNodeAlignment(const Value: TVTNodeAlignment);
     {+}procedure SetNodeDataSize(Value: Integer);
     {+}procedure SetNodeHeight(Node: PVirtualNode; Value: Cardinal);
     {+}procedure SetNodeParent(Node: PVirtualNode; const Value: PVirtualNode);
@@ -2865,7 +2865,7 @@ type
     property LineStyle: TVTLineStyle read FLineStyle write SetLineStyle default lsDotted;
     property Margin: Integer read FMargin write SetMargin default 4;
     {+}property NextNodeToSelect: PVirtualNode read FNextNodeToSelect; // Next tree node that we would like to select if the current one gets deleted
-    property NodeAlignment: TVTNodeAlignment read FNodeAlignment write SetNodeAlignment default naProportional;
+    {+}property NodeAlignment: TVTNodeAlignment read FNodeAlignment write SetNodeAlignment default naProportional;
     {+}property NodeDataSize: Integer read FNodeDataSize write SetNodeDataSize default -1;
     property OperationCanceled: Boolean read GetOperationCanceled;
     property HotMinusBM: TBitmap read FHotMinusBM;
@@ -2980,7 +2980,7 @@ type
     property OnHeaderMouseMove: TVTHeaderMouseMoveEvent read FOnHeaderMouseMove write FOnHeaderMouseMove;
     property OnHeaderMouseUp: TVTHeaderMouseEvent read FOnHeaderMouseUp write FOnHeaderMouseUp;
     property OnHotChange: TVTHotNodeChangeEvent read FOnHotChange write FOnHotChange;
-    property OnIncrementalSearch: TVTIncrementalSearchEvent read FOnIncrementalSearch write FOnIncrementalSearch;
+    {+}property OnIncrementalSearch: TVTIncrementalSearchEvent read FOnIncrementalSearch write FOnIncrementalSearch;
     {+}property OnInitChildren: TVTInitChildrenEvent read FOnInitChildren write FOnInitChildren;
     {+}property OnInitNode: TVTInitNodeEvent read FOnInitNode write FOnInitNode;
     property OnKeyAction: TVTKeyActionEvent read FOnKeyAction write FOnKeyAction;

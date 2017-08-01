@@ -609,12 +609,13 @@ type
 
   // This record must already be defined here and not later because otherwise BCB users will not be able
   // to compile (conversion done by BCB is wrong).
+  {+}
   TCacheEntry = record
     Node: PVirtualNode;
     AbsoluteTop: Cardinal;
   end;
 
-  TCache = array of TCacheEntry;
+  {+}TCache = array of TCacheEntry;
   {+}TNodeArray = array of PVirtualNode;
 
   {+}
@@ -2049,7 +2050,7 @@ type
     FHeader: TVTHeader;
     {+}FRoot: PVirtualNode;
     {+}FDefaultNodeHeight: Cardinal;
-    FIndent: Cardinal;
+    {+}FIndent: Cardinal;
     {+}FOptions: TCustomVirtualTreeOptions;
     {+}FUpdateCount: Cardinal;                      // update stopper, updates of the tree control are only done if = 0
     FSynchUpdateCount: Cardinal;                 // synchronizer, causes all events which are usually done via timers
@@ -2381,8 +2382,8 @@ type
     procedure ClearNodeBackground(const PaintInfo: TVTPaintInfo; UseBackground, Floating: Boolean; R: TRect);
     {+}function CompareNodePositions(Node1, Node2: PVirtualNode; ConsiderChildrenAbove: Boolean = False): Integer;
     procedure DrawLineImage(const PaintInfo: TVTPaintInfo; X, Y, H, VAlign: Integer; Style: TVTLineType; Reverse: Boolean);
-    function FindInPositionCache(Node: PVirtualNode; var CurrentPos: Cardinal): PVirtualNode; overload;
-    function FindInPositionCache(Position: Cardinal; var CurrentPos: Cardinal): PVirtualNode; overload;
+    {+}function FindInPositionCache(Node: PVirtualNode; var CurrentPos: Cardinal): PVirtualNode; overload;
+    {+}function FindInPositionCache(Position: Cardinal; var CurrentPos: Cardinal): PVirtualNode; overload;
     {+}procedure FixupTotalCount(Node: PVirtualNode);
     {+}procedure FixupTotalHeight(Node: PVirtualNode);
     {+}function GetBottomNode: PVirtualNode;
@@ -2454,7 +2455,7 @@ type
     procedure SetHeader(const Value: TVTHeader);
     {+}procedure SetFiltered(Node: PVirtualNode; Value: Boolean);
     procedure SetImages(const Value: TCustomImageList);
-    procedure SetIndent(Value: Cardinal);
+    {+}procedure SetIndent(Value: Cardinal);
     procedure SetLineMode(const Value: TVTLineMode);
     procedure SetLineStyle(const Value: TVTLineStyle);
     procedure SetMargin(Value: Integer);
@@ -2857,7 +2858,7 @@ type
     property IncrementalSearchDirection: TVTSearchDirection read FSearchDirection write FSearchDirection default sdForward;
     property IncrementalSearchStart: TVTSearchStart read FSearchStart write FSearchStart default ssFocusedNode;
     property IncrementalSearchTimeout: Cardinal read FSearchTimeout write FSearchTimeout default 1000;
-    property Indent: Cardinal read FIndent write SetIndent default 18;
+    {+}property Indent: Cardinal read FIndent write SetIndent default 18;
     property LastClickPos: TPoint read FLastClickPos write FLastClickPos;
     property LastDropMode: TDropMode read FLastDropMode write FLastDropMode;
     property LastHintRect: TRect read FLastHintRect write FLastHintRect;

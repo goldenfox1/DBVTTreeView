@@ -1150,7 +1150,7 @@ type
     function GetPreviousVisibleColumn(Column: TColumnIndex; ConsiderAllowFocus: Boolean = False): TColumnIndex;
     function GetScrollWidth: Integer;
     function GetVisibleColumns: TColumnsArray;
-    function GetVisibleFixedWidth: Integer;
+    {+}function GetVisibleFixedWidth: Integer;
     function IsValidColumn(Column: TColumnIndex): Boolean;
     procedure LoadFromStream(const Stream: TStream; Version: Integer);
     procedure PaintHeader(DC: HDC; const R: TRect; HOffset: Integer); overload; virtual;
@@ -2763,7 +2763,7 @@ type
     {+}procedure InternalRemoveFromSelection(Node: PVirtualNode); virtual;
     {+}procedure InvalidateCache;
     procedure Loaded; override;
-    procedure MainColumnChanged; virtual;
+    {+}procedure MainColumnChanged; virtual;
     {+}procedure MarkCutCopyNodes; virtual;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;

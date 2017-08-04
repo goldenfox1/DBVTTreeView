@@ -1151,7 +1151,7 @@ type
     function GetScrollWidth: Integer;
     function GetVisibleColumns: TColumnsArray;
     {+}function GetVisibleFixedWidth: Integer;
-    function IsValidColumn(Column: TColumnIndex): Boolean;
+    {+}function IsValidColumn(Column: TColumnIndex): Boolean;
     procedure LoadFromStream(const Stream: TStream; Version: Integer);
     procedure PaintHeader(DC: HDC; const R: TRect; HOffset: Integer); overload; virtual;
     procedure PaintHeader(TargetCanvas: TCanvas; R: TRect; const Target: TPoint;
@@ -19792,13 +19792,15 @@ end;
 
 function TBaseVirtualTree.DoGetImageIndex(Node: PVirtualNode; Kind: TVTImageKind; Column: TColumnIndex;
   var Ghosted: Boolean; var Index: Integer): TCustomImageList;
+// Запросит приложение / потомок о некоторых свойствах изображения для узла.
+// Возвращает список пользовательских изображений, если задан вызываемым, иначе nil.
 
 // Queries the application/descendant about certain image properties for a node.
 // Returns a custom image list if given by the callee, otherwise nil.
 
 begin
   Result := nil;
-
+  // Сначала попробуйте расширенное событие, чтобы можно было создавать списки пользовательских изображений.
   // First try the enhanced event to allow for custom image lists.
   if Assigned(FOnGetImageEx) then
     FOnGetImageEx(Self, Node, Kind, Column, Ghosted, Index, Result)
@@ -22484,6 +22486,9 @@ end;
 //----------------------------------------------------------------------------------------------------------------------
 
 function TBaseVirtualTree.HasImage(Node: PVirtualNode; Kind: TVTImageKind; Column: TColumnIndex): Boolean;
+// Определяет, получил ли данный узел изображение данного типа в данном столбце.
+// Возвращает True, если да, иначе False.
+// При необходимости данный узел будет неявно инициализирован.
 
 // Determines whether the given node has got an image of the given kind in the given column.
 // Returns True if so, otherwise False.

@@ -2080,7 +2080,7 @@ type
     FHintData: TVTHintData;                      // used while preparing the hint window
     FChangeDelay: Cardinal;                      // used to delay OnChange event
     FEditDelay: Cardinal;                        // determines time to elapse before a node goes into edit mode
-    FPositionCache: TCache;                      // array which stores node references ordered by vertical positions
+    {+}FPositionCache: TCache;                      // array which stores node references ordered by vertical positions
                                                  // (see also DoValidateCache for more information)
     {+}FVisibleCount: Cardinal;                     // number of currently visible nodes
     {+}FStartIndex: Cardinal;                       // index to start validating cache from
@@ -2371,7 +2371,7 @@ type
     procedure AdjustCoordinatesByIndent(var PaintInfo: TVTPaintInfo; Indent: Integer);
     {+}procedure AdjustTotalCount(Node: PVirtualNode; Value: Integer; Relative: Boolean = False);
     {+}procedure AdjustTotalHeight(Node: PVirtualNode; Value: Integer; Relative: Boolean = False);
-    function CalculateCacheEntryCount: Integer;
+    {+}function CalculateCacheEntryCount: Integer;
     procedure CalculateVerticalAlignments(ShowImages, ShowStateImages: Boolean; Node: PVirtualNode; out VAlign,
       VButtonAlign: Integer);
     {+}function ChangeCheckState(Node: PVirtualNode; Value: TCheckState): Boolean;
@@ -4699,6 +4699,7 @@ function TreeFromNode(Node: PVirtualNode): TBaseVirtualTree;
 begin
   Assert(Assigned(Node), 'Node must not be nil.');
 
+  // Корневой узел отмечен тем, что его NextSibling (и PrevSibling) указывает на себя.
   // The root node is marked by having its NextSibling (and PrevSibling) pointing to itself.
   while Assigned(Node) and (Node.NextSibling <> Node) do
     Node := Node.Parent;

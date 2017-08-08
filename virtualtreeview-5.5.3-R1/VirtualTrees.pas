@@ -3104,9 +3104,9 @@ type
     {+}function GetNextVisibleNoInit(Node: PVirtualNode; ConsiderChildrenAbove: Boolean = True): PVirtualNode;
     {+}function GetNextVisibleSibling(Node: PVirtualNode; IncludeFiltered: Boolean = False): PVirtualNode;
     {+}function GetNextVisibleSiblingNoInit(Node: PVirtualNode; IncludeFiltered: Boolean = False): PVirtualNode;
-    function GetNodeAt(const P: TPoint): PVirtualNode; overload; inline;
-    function GetNodeAt(X, Y: Integer): PVirtualNode; overload;
-    function GetNodeAt(X, Y: Integer; Relative: Boolean; var NodeTop: Integer): PVirtualNode; overload;
+    {+}function GetNodeAt(const P: TPoint): PVirtualNode; overload; inline;
+    {+}function GetNodeAt(X, Y: Integer): PVirtualNode; overload;
+    {+}function GetNodeAt(X, Y: Integer; Relative: Boolean; var NodeTop: Integer): PVirtualNode; overload;
     {+}function GetNodeData(Node: PVirtualNode): Pointer;
     {+}function GetNodeLevel(Node: PVirtualNode): Cardinal;
     {+}function GetPrevious(Node: PVirtualNode; ConsiderChildrenAbove: Boolean = False): PVirtualNode;

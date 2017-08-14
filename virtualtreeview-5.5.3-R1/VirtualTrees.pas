@@ -2372,7 +2372,7 @@ type
     {+}procedure AdjustTotalCount(Node: PVirtualNode; Value: Integer; Relative: Boolean = False);
     {+}procedure AdjustTotalHeight(Node: PVirtualNode; Value: Integer; Relative: Boolean = False);
     {+}function CalculateCacheEntryCount: Integer;
-    procedure CalculateVerticalAlignments(ShowImages, ShowStateImages: Boolean; Node: PVirtualNode; out VAlign,
+    {+}procedure CalculateVerticalAlignments(ShowImages, ShowStateImages: Boolean; Node: PVirtualNode; out VAlign,
       VButtonAlign: Integer);
     {+}function ChangeCheckState(Node: PVirtualNode; Value: TCheckState): Boolean;
     function CollectSelectedNodesLTR(MainColumn, NodeLeft, NodeRight: Integer; Alignment: TAlignment; OldRect: TRect;
@@ -2582,7 +2582,7 @@ type
     {+}procedure DetermineHiddenChildrenFlagAllNodes; virtual;
     procedure DetermineHitPositionLTR(var HitInfo: THitInfo; Offset, Right: Integer; Alignment: TAlignment); virtual;
     procedure DetermineHitPositionRTL(var HitInfo: THitInfo; Offset, Right: Integer; Alignment: TAlignment); virtual;
-    function DetermineLineImageAndSelectLevel(Node: PVirtualNode; var LineImage: TLineImage): Integer; virtual;
+    {+}function DetermineLineImageAndSelectLevel(Node: PVirtualNode; var LineImage: TLineImage): Integer; virtual;
     {+}function DetermineNextCheckState(CheckType: TCheckType; CheckState: TCheckState): TCheckState; virtual;
     function DetermineScrollDirections(X, Y: Integer): TScrollDirections; virtual;
     procedure DoAdvancedHeaderDraw(var PaintInfo: THeaderPaintInfo; const Elements: THeaderPaintElements); virtual;
@@ -3148,7 +3148,7 @@ type
     {+}procedure MoveTo(Source, Target: PVirtualNode; Mode: TVTNodeAttachMode; ChildrenOnly: Boolean); overload;
     {+}procedure MoveTo(Node: PVirtualNode; Tree: TBaseVirtualTree; Mode: TVTNodeAttachMode;
       ChildrenOnly: Boolean); overload;
-    procedure PaintTree(TargetCanvas: TCanvas; const Window: TRect; Target: TPoint; PaintOptions: TVTInternalPaintOptions;
+    {+}procedure PaintTree(TargetCanvas: TCanvas; const Window: TRect; Target: TPoint; PaintOptions: TVTInternalPaintOptions;
       PixelFormat: TPixelFormat = pfDevice); virtual;
     function PasteFromClipboard: Boolean; virtual;
     procedure PrepareDragImage(HotSpot: TPoint; const DataObject: IDataObject);
@@ -17717,10 +17717,12 @@ end;
 //----------------------------------------------------------------------------------------------------------------------
 
 procedure TBaseVirtualTree.AdjustPaintCellRect(var PaintInfo: TVTPaintInfo; out NextNonEmpty: TColumnIndex);
-
+// Используется в потомках для изменения прямоугольника рисования текущего столбца при рисовании определенного узла.
 // Used in descendants to modify the paint rectangle of the current column while painting a certain node.
 
 begin
+  //Поскольку ячейки всегда отображаются слева направо, следующий индекс столбца не зависит
+  //от bidi, но не границы столбцов, которые могут меняться в зависимости от содержимого ячейки.
   // Since cells are always drawn from left to right the next column index is independent of the
   // bidi mode, but not the column borders, which might change depending on the cell's content.
   NextNonEmpty := FHeader.FColumns.GetNextVisibleColumn(PaintInfo.Column);
@@ -29967,6 +29969,9 @@ begin
   {$ifdef DEBUG_VTV}Logger.Send([lcPaintHeader],'ClientRect',ClientRect);{$endif}
   {$ifdef DEBUG_VTV}Logger.Send([lcPaintHeader],'TreeRect',GetTreeRect);{$endif}
   {$ifdef DEBUG_VTV}Logger.Send([lcPaintHeader],'OffsetX: %d  OffsetY: %d',[OffsetX,OffsetY]);{$endif}
+
+  // lcl изменяется на глубину цвета 24 бит, когда глубина экрана составляет 32 бит
+  // todo: удалить, когда это ограничение исчезнет
   //lcl changes to 24bit color depth when screen depth is 32 bit
   //todo: remove when this limitation is removed
   {$ifdef Windows}

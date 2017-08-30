@@ -2,12 +2,17 @@
 <CONFIG>
   <ProjectSession>
     <PathDelim Value="\"/>
-    <Version Value="9"/>
+    <Version Value="10"/>
     <Units Count="21">
       <Unit0>
         <Filename Value="Advanced.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="7"/>
+        <CursorPos X="54" Y="22"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="WindowsXPStyleDemo.pas"/>
@@ -34,7 +39,10 @@
         <ComponentName Value="DrawTreeForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
         <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="Editors.pas"/>
@@ -130,7 +138,6 @@
       </Unit15>
       <Unit16>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="8252"/>
         <CursorPos X="24" Y="8350"/>
@@ -145,7 +152,7 @@
       </Unit16>
       <Unit17>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="6512"/>
         <CursorPos X="35" Y="6518"/>
         <UsageCount Value="103"/>
@@ -162,7 +169,7 @@
       </Unit18>
       <Unit19>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_fn_math.inc"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="27"/>
         <CursorPos X="14" Y="37"/>
         <UsageCount Value="98"/>
@@ -176,7 +183,7 @@
         <UsageCount Value="6"/>
       </Unit20>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
         <Caret Line="8338" Column="6" TopLine="8333"/>
@@ -235,43 +242,43 @@
       </Position14>
       <Position15>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8281" Column="3" TopLine="8289"/>
+        <Caret Line="8697" Column="80" TopLine="8691"/>
       </Position15>
       <Position16>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8697" Column="80" TopLine="8691"/>
+        <Caret Line="8357" Column="17" TopLine="8350"/>
       </Position16>
       <Position17>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8357" Column="17" TopLine="8350"/>
+        <Caret Line="8921" Column="28" TopLine="8915"/>
       </Position17>
       <Position18>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8921" Column="28" TopLine="8915"/>
+        <Caret Line="8929" Column="37" TopLine="8924"/>
       </Position18>
       <Position19>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8929" Column="37" TopLine="8924"/>
+        <Caret Line="9085" Column="77" TopLine="9080"/>
       </Position19>
       <Position20>
-        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="9085" Column="77" TopLine="9080"/>
+        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
+        <Caret Line="855" Column="12" TopLine="845"/>
       </Position20>
       <Position21>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
-        <Caret Line="855" Column="12" TopLine="845"/>
+        <Caret Line="6518" Column="35" TopLine="6513"/>
       </Position21>
       <Position22>
-        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8273" Column="14" TopLine="8275"/>
+        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
+        <Caret Line="6535" Column="26" TopLine="6529"/>
       </Position22>
       <Position23>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
-        <Caret Line="6518" Column="35" TopLine="6513"/>
+        <Caret Line="6518" Column="35" TopLine="6512"/>
       </Position23>
       <Position24>
-        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
-        <Caret Line="6535" Column="26" TopLine="6529"/>
+        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
+        <Caret Line="8273" TopLine="8267"/>
       </Position24>
       <Position25>
         <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
@@ -282,21 +289,16 @@
         <Caret Line="8273" TopLine="8267"/>
       </Position26>
       <Position27>
-        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\inc\orca_scene2d_obj_virtualtrees.inc"/>
-        <Caret Line="6518" Column="35" TopLine="6512"/>
-      </Position27>
-      <Position28>
-        <Filename Value="..\..\..\=Orca_Ext\pl_ORCA\source\orca_scene2d.pas"/>
-        <Caret Line="8273" TopLine="8267"/>
-      </Position28>
-      <Position29>
         <Filename Value="..\..\virtualtreeview-5.5.3-R1\VirtualTrees.pas"/>
         <Caret Line="3315" Column="20" TopLine="3311"/>
-      </Position29>
-      <Position30>
+      </Position27>
+      <Position28>
         <Filename Value="..\..\virtualtreeview-5.5.3-R1\VirtualTrees.pas"/>
         <Caret Line="1915" Column="20" TopLine="1908"/>
-      </Position30>
+      </Position28>
+      <Position29>
+        <Filename Value="Advanced.lpr"/>
+      </Position29>
     </JumpHistory>
   </ProjectSession>
   <Debugging>

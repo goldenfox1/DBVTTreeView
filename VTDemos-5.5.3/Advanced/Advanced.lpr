@@ -19,7 +19,7 @@ uses
   //WindowsXPStyleDemo in 'WindowsXPStyleDemo.pas' {WindowsXPForm},
   //MultilineDemo in 'MultilineDemo.pas' {NodeForm},
   //HeaderCustomDrawDemo in 'HeaderCustomDrawDemo.pas' {HeaderOwnerDrawForm},
-  States in 'States.pas' {StateForm}, Printer4Lazarus, unit1;
+  States in 'States.pas' {StateForm}, Printer4Lazarus;
 
 {$R *.res}
 {$R extraresources.res}

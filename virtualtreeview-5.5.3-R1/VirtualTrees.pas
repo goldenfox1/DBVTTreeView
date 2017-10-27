@@ -2696,7 +2696,7 @@ type
       ForClipboard: Boolean): HRESULT; virtual;
     {+}procedure DoReset(Node: PVirtualNode); virtual;
     {+}procedure DoSaveUserData(Node: PVirtualNode; Stream: TStream); virtual;
-    procedure DoScroll(DeltaX, DeltaY: Integer); virtual;
+    {+}procedure DoScroll(DeltaX, DeltaY: Integer); virtual;
     {+}function DoSetOffsetXY(Value: TPoint; Options: TScrollUpdateOptions; ClipRect: PRect = nil): Boolean; virtual;
     procedure DoShowScrollBar(Bar: Integer; Show: Boolean); virtual;
     procedure DoStartDrag(var DragObject: TDragObject); override;
@@ -3006,7 +3006,7 @@ type
     {+}property OnResetNode: TVTChangeEvent read FOnResetNode write FOnResetNode;
     {+}property OnSaveNode: TVTSaveNodeEvent read FOnSaveNode write FOnSaveNode;
     {+}property OnSaveTree: TVTSaveTreeEvent read FOnSaveTree write FOnSaveTree;
-    property OnScroll: TVTScrollEvent read FOnScroll write FOnScroll;
+    {+}property OnScroll: TVTScrollEvent read FOnScroll write FOnScroll;
     property OnShowScrollBar: TVTScrollBarShowEvent read FOnShowScrollBar write FOnShowScrollBar;
     {+}property OnStartOperation: TVTOperationEvent read FOnStartOperation write FOnStartOperation;
     {+}property OnStateChange: TVTStateChangeEvent read FOnStateChange write FOnStateChange;

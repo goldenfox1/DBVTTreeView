@@ -2818,8 +2818,8 @@ type
 
     property Alignment: TAlignment read FAlignment write SetAlignment default taLeftJustify;
     {+}property AnimationDuration: Cardinal read FAnimationDuration write SetAnimationDuration default 200;
-    property AutoExpandDelay: Cardinal read FAutoExpandDelay write FAutoExpandDelay default 1000;
-    property AutoScrollDelay: Cardinal read FAutoScrollDelay write FAutoScrollDelay default 1000;
+    {+}property AutoExpandDelay: Cardinal read FAutoExpandDelay write FAutoExpandDelay default 1000;
+    {+}property AutoScrollDelay: Cardinal read FAutoScrollDelay write FAutoScrollDelay default 1000;
     property AutoScrollInterval: TAutoScrollInterval read FAutoScrollInterval write FAutoScrollInterval default 1;
     property Background: TPicture read FBackground write SetBackground;
     property BackgroundOffsetX: Integer index 0 read FBackgroundOffsetX write SetBackgroundOffset default 0;

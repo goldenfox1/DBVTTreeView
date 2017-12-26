@@ -2324,8 +2324,8 @@ type
     FOnCreateDragManager: TVTCreateDragManagerEvent; // called to allow for app./descendant defined drag managers
     FOnCreateDataObject: TVTCreateDataObjectEvent; // called to allow for app./descendant defined data objects
     FOnDragAllowed: TVTDragAllowedEvent;         // used to get permission for manual drag in mouse down
-    FOnDragOver: TVTDragOverEvent;               // called for every mouse move
-    FOnDragDrop: TVTDragDropEvent;               // called on release of mouse button (if drop was allowed)
+    {+}FOnDragOver: TVTDragOverEvent;               // called for every mouse move
+    {+}FOnDragDrop: TVTDragDropEvent;               // called on release of mouse button (if drop was allowed)
     FOnHeaderDragged: TVTHeaderDraggedEvent;     // header (column) drag'n drop
     FOnHeaderDraggedOut: TVTHeaderDraggedOutEvent; // header (column) drag'n drop, which did not result in a valid drop.
     FOnHeaderDragging: TVTHeaderDraggingEvent;   // header (column) drag'n drop
@@ -2801,7 +2801,7 @@ type
     procedure UnselectNodes(StartNode, EndNode: PVirtualNode); virtual;
     procedure UpdateColumnCheckState(Col: TVirtualTreeColumn);
     procedure UpdateDesigner; virtual;
-    {+}procedure UpdateEditBounds; virtual;
+    procedure UpdateEditBounds; virtual;
     procedure UpdateHeaderRect; virtual;
     procedure UpdateWindowAndDragImage(const Tree: TBaseVirtualTree; TreeRect: TRect; UpdateNCArea,
       ReshowDragImage: Boolean); virtual;
@@ -16894,7 +16894,7 @@ begin
             end
             else
               DoStateChange([tsIncrementalSearchPending]);
-          VK_F1:
+          VK_ F1:
             if Assigned(FOnGetHelpContext) then
             begin
               Context := 0;

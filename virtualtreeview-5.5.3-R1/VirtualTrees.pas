@@ -16894,7 +16894,7 @@ begin
             end
             else
               DoStateChange([tsIncrementalSearchPending]);
-          VK_ F1:
+          VK_F1:
             if Assigned(FOnGetHelpContext) then
             begin
               Context := 0;

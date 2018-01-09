@@ -2089,8 +2089,8 @@ type
     {+}FSelectionLocked: Boolean;                   // prevents the tree from changing the selection 
     {+}FRangeAnchor: PVirtualNode;                  // anchor node for selection with the keyboard, determines start of a
                                                  // selection range
-    FCheckNode: PVirtualNode;                    // node which "captures" a check event
-    FPendingCheckState: TCheckState;             // the new state the check node will get if all went fine
+    {+}FCheckNode: PVirtualNode;                    // node which "captures" a check event
+    {+}FPendingCheckState: TCheckState;             // the new state the check node will get if all went fine
     {+}FCheckPropagationCount: Cardinal;            // nesting level of check propagation (WL, 05.02.2004)
     {+}FLastSelectionLevel: Integer;                // keeps the last node level for constrained multiselection
     FDrawSelShiftState: TShiftState;             // keeps the initial shift state when the user starts selection with
@@ -2162,9 +2162,9 @@ type
     FAutoScrollDelay: Cardinal;                  // amount of milliseconds to wait until autoscrolling becomes active
     FAutoExpandDelay: Cardinal;                  // amount of milliseconds to wait until a node is expanded if it is the
                                                  // drop target
-    {+}FOffsetX: Integer;
-    {+}FOffsetY: Integer;                           // Determines left and top scroll offset.
-    {+}FEffectiveOffsetX: Integer;                  // Actual position of the horizontal scroll bar (varies depending on bidi mode).
+    FOffsetX: Integer;
+    FOffsetY: Integer;                           // Determines left and top scroll offset.
+    FEffectiveOffsetX: Integer;                  // Actual position of the horizontal scroll bar (varies depending on bidi mode).
     {+}FRangeX,
     {+}FRangeY: Cardinal;                           // current virtual width and height of the tree
     {+}FBottomSpace: Cardinal;                      // Extra space below the last node.
@@ -2324,8 +2324,8 @@ type
     FOnCreateDragManager: TVTCreateDragManagerEvent; // called to allow for app./descendant defined drag managers
     FOnCreateDataObject: TVTCreateDataObjectEvent; // called to allow for app./descendant defined data objects
     FOnDragAllowed: TVTDragAllowedEvent;         // used to get permission for manual drag in mouse down
-    FOnDragOver: TVTDragOverEvent;               // called for every mouse move
-    FOnDragDrop: TVTDragDropEvent;               // called on release of mouse button (if drop was allowed)
+    {+}FOnDragOver: TVTDragOverEvent;               // called for every mouse move
+    {+}FOnDragDrop: TVTDragDropEvent;               // called on release of mouse button (if drop was allowed)
     FOnHeaderDragged: TVTHeaderDraggedEvent;     // header (column) drag'n drop
     FOnHeaderDraggedOut: TVTHeaderDraggedOutEvent; // header (column) drag'n drop, which did not result in a valid drop.
     FOnHeaderDragging: TVTHeaderDraggingEvent;   // header (column) drag'n drop
@@ -2801,7 +2801,7 @@ type
     procedure UnselectNodes(StartNode, EndNode: PVirtualNode); virtual;
     procedure UpdateColumnCheckState(Col: TVirtualTreeColumn);
     procedure UpdateDesigner; virtual;
-    {+}procedure UpdateEditBounds; virtual;
+    procedure UpdateEditBounds; virtual;
     procedure UpdateHeaderRect; virtual;
     procedure UpdateWindowAndDragImage(const Tree: TBaseVirtualTree; TreeRect: TRect; UpdateNCArea,
       ReshowDragImage: Boolean); virtual;
@@ -2818,8 +2818,8 @@ type
 
     property Alignment: TAlignment read FAlignment write SetAlignment default taLeftJustify;
     {+}property AnimationDuration: Cardinal read FAnimationDuration write SetAnimationDuration default 200;
-    property AutoExpandDelay: Cardinal read FAutoExpandDelay write FAutoExpandDelay default 1000;
-    property AutoScrollDelay: Cardinal read FAutoScrollDelay write FAutoScrollDelay default 1000;
+    {+}property AutoExpandDelay: Cardinal read FAutoExpandDelay write FAutoExpandDelay default 1000;
+    {+}property AutoScrollDelay: Cardinal read FAutoScrollDelay write FAutoScrollDelay default 1000;
     property AutoScrollInterval: TAutoScrollInterval read FAutoScrollInterval write FAutoScrollInterval default 1;
     property Background: TPicture read FBackground write SetBackground;
     property BackgroundOffsetX: Integer index 0 read FBackgroundOffsetX write SetBackgroundOffset default 0;
@@ -2921,8 +2921,8 @@ type
     property OnCanSplitterResizeHeader: TVTCanSplitterResizeHeaderEvent read FOnCanSplitterResizeHeader write FOnCanSplitterResizeHeader;
     property OnCanSplitterResizeNode: TVTCanSplitterResizeNodeEvent read FOnCanSplitterResizeNode write FOnCanSplitterResizeNode;
     {+}property OnChange: TVTChangeEvent read FOnChange write FOnChange;
-    property OnChecked: TVTChangeEvent read FOnChecked write FOnChecked;
-    property OnChecking: TVTCheckChangingEvent read FOnChecking write FOnChecking;
+    {+}property OnChecked: TVTChangeEvent read FOnChecked write FOnChecked;
+    {+}property OnChecking: TVTCheckChangingEvent read FOnChecking write FOnChecking;
     {+}property OnCollapsed: TVTChangeEvent read FOnCollapsed write FOnCollapsed;
     {+}property OnCollapsing: TVTChangingEvent read FOnCollapsing write FOnCollapsing;
     property OnColumnClick: TVTColumnClickEvent read FOnColumnClick write FOnColumnClick;

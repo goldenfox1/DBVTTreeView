@@ -101,21 +101,21 @@ type
     FBuildTree: boolean;
     FDataController: TDBTreeDataController;
     FDataNodes: TList;
-    procedure OnRecordChanged(AField:TField);
-    procedure OnDataSetChanged(aDataSet: TDataSet);
-    procedure OnDataSetOpen(aDataSet: TDataSet);
-    procedure OnDataSetClose(aDataSet: TDataSet);
-    procedure OnEditingChanged(aDataSet: TDataSet);
-    procedure OnInvalidDataSet(aDataSet: TDataSet);
-    procedure OnInvalidDataSource(aDataSet: TDataset);
-    procedure OnKeyChanged(AField:TField);
-    procedure OnParentChanged(AField:TField);
-    procedure OnLayoutChanged(aDataSet: TDataSet);
-    procedure OnNewDataSet(aDataSet: TDataset);           //1
-    procedure OnDataSetScrolled(aDataSet:TDataSet; Distance: Integer);
-    procedure OnDataSourceChanged (ADataSource: TDataSource);
-    procedure OnUpdateData(aDataSet: TDataSet);
-    procedure SetDataController(const AValue: TDBTreeDataController);
+    procedure OnRecordChanged(aField:TField);                     //прерывание после изменения записи в DataSet сразу после Post
+    procedure OnDataSetChanged(aDataSet: TDataSet);               //прерывание при изменениях в DataSet
+    procedure OnDataSetOpen(aDataSet: TDataSet);                  //прерывание при открытии DataSet
+    procedure OnDataSetClose(aDataSet: TDataSet);                 //прерывание при закрытии DataSet
+    procedure OnEditingChanged(aDataSet: TDataSet);               //прерывание при входе или выходе в/из режима редактирования данных в DataSet
+    procedure OnInvalidDataSet(aDataSet: TDataSet);               //прерывание если не правильный DataSet
+    procedure OnInvalidDataSource(aDataSet: TDataset);            //прерывание если не правильный DataSource
+    procedure OnKeyChanged(aField:TField);
+    procedure OnParentChanged(aField:TField);
+    procedure OnLayoutChanged(aDataSet: TDataSet);                //прерывание при изменении состава или порядка полей в DataSet
+    procedure OnNewDataSet(aDataSet: TDataset);                   //прерывание при подключении к другому DataSet
+    procedure OnDataSetScrolled(aDataSet:TDataSet; Distance: Integer);  //прерывание при смене текущей записи в DataSet
+    procedure OnDataSourceChanged (aDataSource: TDataSource);
+    procedure OnUpdateData(aDataSet: TDataSet);                   //прерывание при записи изменений в БД
+    procedure SetDataController(const aValue: TDBTreeDataController);
   protected
     procedure DoGetText(Node: PVirtualNode; Column: TColumnIndex; TextType: TVSTTextType; var AText: String); override;                //читаем текст ячейки
     function DoFocusChanging(OldNode, NewNode: PVirtualNode; OldColumn, NewColumn: TColumnIndex): Boolean; override;
